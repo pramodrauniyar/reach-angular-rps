@@ -1,4 +1,4 @@
-# Rock Paper and Scissor game in REACH
+# Rock Paper and Scissor game in REACH/Algorand blockchain
 
 This project is Angular implementation of the Rock Paper and Scissor game.
 ####Backend reach code is derived from [Reach tutorial 9](https://docs.reach.sh/tut-9.html);
