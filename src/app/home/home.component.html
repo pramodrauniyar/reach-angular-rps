@@ -1,0 +1,46 @@
+
+<div *ngIf="!acc"> Connecting your browser wallet please wait.....</div>
+
+<div *ngIf="acc">
+  <div>Your balance is:  {{bal}} </div>
+  <div>Your address is:  {{acc.getAddress()}}</div>
+  <div>Your Network address is:  {{acc.networkAccount.addr}}</div>
+  <div *ngIf="!showPlayAs">
+    Want to play as
+    <a href="#" (click)="deployer()">Deployer</a>
+
+    or
+    <a href="#" (click)="attacher()">Attacher</a>
+  </div>
+  <div *ngIf="showPlayAs">
+    Hello <b>{{who}}</b><br/>
+    <div *ngIf="ctcInfo && who !=='Bob'">The contract is deployed as {{ctcInfo}} </div>
+  </div>
+
+  <div *ngIf="who==='Bob'">
+    <div *ngIf="showCtcInfo">
+      Please enter contract detail:<br/>
+      <input placeholder="Please enter contract detail!" type="text" [(ngModel)]="ctcInfo" name="ctcInfo" *ngIf="showCTCInputBox"/>
+      <button (click)="attach()"  [disabled]="!ctcInfo">Attach</button>
+    </div>
+    <div>
+    <button type="button" (click)="acceptWager()" value="Accept wager!" *ngIf="showAcceptWager" [disabled]="acceptedWager">Accept Wager!</button>
+    </div>
+  </div>
+  <div *ngIf="showRPS">
+    <a href="#" (click)="playHand(0)" i>ROCK</a> |
+    <a href="#" (click)="playHand(1)" i>PAPER</a> |
+    <a href="#" (click)="playHand(2)" i>SCISSORS</a>
+  </div>
+  <div *ngIf="selectedHand"> Selected hand is: {{selectedHand}}</div>
+  <div class="spinner-position"  *ngIf="isLoading">
+    <div style="">{{who}}, Please wait, processing action  .....</div>
+
+  </div>
+  <div *ngIf="winnerMessage"><b>{{winnerMessage}}</b></div>
+</div>
+
+
+<!--    <app-deployer-or-attacher  [acc]="acc" [bal]="bal" [type]="type" [info]="ctcInfo" [acceptedWager]="acceptedWager"></app-deployer-or-attacher>-->
+
+
