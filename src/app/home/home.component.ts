@@ -110,8 +110,9 @@ export class HomeComponent implements OnInit {
         wager: stdlib.parseCurrency(1),
         deadline: 100,
       };
-      backend.Alice(this.ctc, interact);
-
+      backend.Alice(this.ctc, interact).catch(error => {
+        console.log("Error", error);
+      });
       return false;
     } catch (e) {
       console.log(e);
@@ -154,7 +155,10 @@ export class HomeComponent implements OnInit {
           console.log(`Bob accepts the wager of ${wager}.`);
         },
       };
-      backend.Bob(this.ctc, interact);
+      backend.Bob(this.ctc, interact).catch(error => {
+        console.log("Error", error);
+      });
+
     } catch (e) {
       console.log(e);
     }
